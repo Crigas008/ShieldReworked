@@ -41,7 +41,6 @@ public class ShieldSpeedBoostListener implements Listener {
         AttributeInstance attr = player.getAttribute(Attribute.MOVEMENT_SPEED);
         if (attr == null) return;
 
-        // Remove old modifier if present
         if (activeModifiers.containsKey(player.getUniqueId())) {
             attr.removeModifier(activeModifiers.get(player.getUniqueId()));
             activeModifiers.remove(player.getUniqueId());
@@ -70,7 +69,6 @@ public class ShieldSpeedBoostListener implements Listener {
 
         player.sendMessage("§aSpeed boost activated after blocking!");
 
-        // Schedule removal of the speed boost
         Bukkit.getScheduler().runTaskLater(ShieldRework.getInstance(), () -> {
             AttributeInstance attr2 = player.getAttribute(Attribute.MOVEMENT_SPEED);
             if (attr2 != null && activeModifiers.containsKey(player.getUniqueId())) {
